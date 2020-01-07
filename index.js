@@ -1,20 +1,24 @@
 const request = require('request');
 
 
-var ref = 9.4;
+var ref = 9.2;
 var LastRefDate = new Date();
 const thre = 0.2;
 const maxDays = 5;
-const checkInterval = 1000//*60*5;
+const checkInterval = 1000*60*5;
 
 setInterval(()=>{
 	getRate("GBP", "CNY", (rate)=>{
 		console.log((new Date()) + " - GBP->CNY :: " + rate + "  ref: " + ref);
 		if(rate < ref - thre){
 			console.log("GBP DOWN!!");
-			//mail("i@yimian.xyz", `GBP DOWN TO ${rate}`, `Current Rate: ${rate}, Ref Rate: ${ref}`);
-			//sms("18118155257", `英镑跌至${rate}`, `发消息提醒`);
-			//sms("15827586269", `英镑跌至${rate}`, `发消息提醒`);
+
+			mail("i@yimian.xyz", `GBP DOWN TO ${rate}`, `Current Rate: ${rate}, Ref Rate: ${ref}`);
+			sms("18118155257", `英镑跌至${rate}`, `特发消息提醒`);
+			sms("15827586269", `英镑跌至${rate}`, `特发消息提醒`);
+			sms("13371035727", `英镑跌至${rate}`, `特发消息提醒`);
+			sms("18888283877", `英镑跌至${rate}`, `特发消息提醒`);
+
 			ref = rate;
 			LastRefDate = new Date();
 		}
