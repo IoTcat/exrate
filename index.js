@@ -13,6 +13,8 @@ setInterval(()=>{
 		if(rate < ref - thre){
 			console.log("GBP DOWN!!");
 			mail("i@yimian.xyz", `GBP DOWN TO ${rate}`, `Current Rate: ${rate}, Ref Rate: ${ref}`);
+			sms("18118155257", `英镑跌至${rate}`, `发消息提醒`);
+			sms("15827586269", `英镑跌至${rate}`, `发消息提醒`);
 			ref = rate;
 			LastRefDate = new Date();
 		}
@@ -35,6 +37,11 @@ request(`https://webapi.huilv.cc/api/exchange?num=100&chiyouhuobi=${from}&duihua
 	  callback(erate);
 });}
 
+
 var mail = (to, subject, body) => {
-	request(`https://api.yimian.xyz/mail/?to=${to}&subject=${subject}&body=${body}&from=exRate`);
+	request(encodeURI(`https://api.yimian.xyz/mail/?to=${to}&subject=${subject}&body=${body}&from=exRate`));
+}
+
+var sms = (to, s0, s1) => {
+	request(encodeURI(`https://api.yimian.xyz/sms/?to=${to}&s0=${s0}&s1=${s1}&t=` + Date.parse(new Date)/1000));
 }

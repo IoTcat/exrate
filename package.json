@@ -1,6 +1,6 @@
 {
   "name": "exrate",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "watch exchange rate with notification..",
   "main": "index.js",
   "scripts": {
