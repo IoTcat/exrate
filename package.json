@@ -1,0 +1,26 @@
+{
+  "name": "exrate",
+  "version": "1.0.0",
+  "description": "watch exchange rate with notification..",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iotcat/exrate.git"
+  },
+  "keywords": [
+    "exchange",
+    "rate"
+  ],
+  "author": "iotcat",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/iotcat/exrate/issues"
+  },
+  "homepage": "https://github.com/iotcat/exrate#readme",
+  "dependencies": {
+    "request": "^2.88.0"
+  }
+}
