@@ -12,11 +12,13 @@ setInterval(()=>{
 		console.log((new Date()) + " - GBP->CNY :: " + rate + "  ref: " + ref);
 		if(rate < ref - thre){
 			console.log("GBP DOWN!!");
+
 			mail("i@yimian.xyz", `GBP DOWN TO ${rate}`, `Current Rate: ${rate}, Ref Rate: ${ref}`);
 			sms("18118155257", `英镑跌至${rate}`, `特发消息提醒`);
 			sms("15827586269", `英镑跌至${rate}`, `特发消息提醒`);
 			sms("13371035727", `英镑跌至${rate}`, `特发消息提醒`);
 			sms("18888283877", `英镑跌至${rate}`, `特发消息提醒`);
+
 			ref = rate;
 			LastRefDate = new Date();
 		}
@@ -30,12 +32,10 @@ setInterval(()=>{
 
 
 var getRate = (from = "GBP", to = "CNY", callback) => {
-request(`https://webapi.huilv.cc/api/exchange?num=100&chiyouhuobi=${from}&duihuanhuobi=${to}`, function (error, response, body) {
+request(`https://www.huilv.cc/${from}_${to}/`, function (error, response, body) {
 	  if (error) console.log('error:', error); // Print the error if one occurred
-	  var jisuanjieguo = (res) => {
-		return res.dangqianhuilv;
-	  };
-	  var erate = eval(body);
+	  var erate = body.match(/<span(.*?)<\/span>/g)[0].match(/\d+(.\d+)?/g)[0];
+	  console.log(erate);
 	  callback(erate);
 });}
 
